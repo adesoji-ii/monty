@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdarg.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -50,6 +51,7 @@ int parse_line(char *buffer, int line_number, int format);
 void read_file(FILE *);
 int len_chars(FILE *);
 void find_func(char *, char *, int, int);
+int is_integer(const char *str)
 
 /*Stack operations*/
 stack_t *create_node(int n);
@@ -82,6 +84,7 @@ void err(int error_code, ...);
 void more_err(int error_code, ...);
 void string_err(int error_code, ...);
 void rotr(stack_t **, unsigned int);
+void handle_error(FILE *file, char *content, stack_t *stack);
 void handle_error(void);
 
 #endif
