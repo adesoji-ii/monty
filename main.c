@@ -24,12 +24,12 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
+	bus.file = file;
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	bus.file = file;
 	while (read_line > 0)
 	{
 		content = NULL;
@@ -40,12 +40,9 @@ int main(int argc, char *argv[])
 		{
 			execute(content, &stack, counter, file);
 		}
-		free(content); /* Free allocated memory */
+		free(content);
 	}
-	free_stack(stack); /* Clean up stack memory */
-	if (file != NULL)
-	{
-		fclose(file); /* Close file if it's open */
-	}
-	return (0);
+	free_stack(stack);
+	fclose(file);
+return (0);
 }
